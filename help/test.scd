@@ -1,0 +1,3 @@
+(
+MainFen().front
+)

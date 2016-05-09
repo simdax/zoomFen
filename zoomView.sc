@@ -50,7 +50,7 @@ ZoomView : RangedView{
 	}
 	add{ arg v, bounds;
 		v.new(view, bounds.asRect);
-		matrix.a=view; matrix.a.children.postln;
+		matrix.a=view; 
 		matrix.b=matrix.b.add(bounds);
 		matrix.c=matrix.b;
 		this.rangeH.doAction;

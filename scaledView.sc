@@ -93,7 +93,7 @@ GhostView : ScaledView{
 
 	var objects, classes;
 	*new{arg p, b ... classes;
-		classes.isEmpty.if{classes=[Object]};
+		classes.isEmpty.if{classes=[String]};
 		^super.new(p, b).init(classes)
 	}
 	init{ arg cl;
@@ -125,7 +125,7 @@ GhostView : ScaledView{
 /*
 
 (
-a=GhostView(nil, 200@200, String)
+a=GhostView()
 .defSize_(50@50); a.front;
 b=DragSource().object_("io").front
 )

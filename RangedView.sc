@@ -1,14 +1,16 @@
-//RangedView().front
+/*
+RangedView().front
+*/
 
 RangedView : View{
 
 	var <rangeH, <rangeV;
 	var tailleRanger=20;
-	var <matrice, <view;
+	var <view;
 	var <zoom , <translate;
 	var <>action;
 	
-	*new{ arg p, b;
+	*new{ arg p, b=150@150;
 		^super.new(p, b).init2
 	}
 	init2{
@@ -37,10 +39,13 @@ RangedView : View{
 		};
 	}
 	trueSize{
-		//		var b=(this.bounds ? this.parent.asView.bounds);
 		var b=this.bounds;
 		^b
 		.width_(b.width-tailleRanger)
 		.height_(b.height-tailleRanger)
+	}
+	view_{ arg v;
+		view.close;
+		view=v.new(this, this.trueSize);
 	}
 }
