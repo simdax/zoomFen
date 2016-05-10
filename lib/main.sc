@@ -8,8 +8,7 @@ MainFen : ZoomView {
 		view=MoveGhostView(this, this.trueSize);
 		matrix=Matrix(view);
 		view.addAction({ arg self, x, y, mod;
-			view.children.postln;
-			this.put(Button, Rect(x, y, 50,50));
+			this.refreshMatrix
 		}, \receiveDragHandler);
 	}
 	
