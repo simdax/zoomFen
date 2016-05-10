@@ -12,11 +12,14 @@ Matrix {
 		this.push;
 		c=b;
 	}
-	push{ arg self;
+	push{
 		b=a.children.collect(_.bounds);
 	}
 	pop{
 		b=c
+	}
+	popHard{
+		a.children.do{|v, i| v.bounds=c[i]}
 	}
 	/// interface
 	zoomX{ arg  zoom;

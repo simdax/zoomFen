@@ -1,9 +1,10 @@
 /*
 
 a=ZoomView(nil, 200@200).front;
-a.add(Button, Rect(30,50,10,30));
-a.add(Button, Rect(50,50,10,30));
-a.add(Button, Rect(0,50,10,30));
+a.put(Button, Rect(30,50,10,30));
+a.put(Button, Rect(50,50,10,30));
+a.put(Button, Rect(0,50,10,30));
+a.put(Button, Rect(100,50,10,30));
 */
 
 ZoomView : RangedView{
@@ -31,28 +32,15 @@ ZoomView : RangedView{
 			matrix.pop
 		};
 		rangeV.action=action; rangeH.action=action;
-		// rangeV.action_{ arg self;
-		// 	var origin=(1-self.hi);
-		// 	var zoom=(self.range+origin).reciprocal;
-		// 	matrix.zoomY(zoom);
-		// 	matrix.push;
-		// 	matrix.translateY(view.bounds.height*origin*zoom.neg);
-		// 	matrix.pop
-		// };
-		// rangeH.action_{ arg self;
-		// 	var origin=(self.lo);
-		// 	var zoom=(self.range+origin).reciprocal;
-		// 	matrix.zoomX(zoom);
-		// 	matrix.push;
-		// 	matrix.translateX(view.bounds.width*origin*zoom.neg);
-		// 	matrix.pop
-		// }
 	}
-	add{ arg v, bounds;
+	put{
+		arg v, bounds;
 		v.new(view, bounds.asRect);
-		matrix.a=view; 
-		matrix.b=matrix.b.add(bounds);
-		matrix.c=matrix.b;
+		this.refreshMatrix
+	}
+	refreshMatrix{
+		matrix.popHard;
+		matrix.init(view);
 		this.rangeH.doAction;
 		this.rangeV.doAction;
 	}
